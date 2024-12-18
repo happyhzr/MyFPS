@@ -10,6 +10,7 @@ public class WanderingAI : MonoBehaviour
 
     private bool isAlive;
     private GameObject fireball;
+    private const float baseSpeed = 3.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,21 @@ public class WanderingAI : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        Messenger<float>.AddListener(GameEvent.SPEED_CHANGED, OnSpeedChanged);
+    }
+
+    private void OnDisable()
+    {
+        Messenger<float>.RemoveListener(GameEvent.SPEED_CHANGED, OnSpeedChanged);
+    }
+
+    private void OnSpeedChanged(float value)
+    {
+        speed = baseSpeed * value;
     }
 
     public void SetAlive(bool alive)
