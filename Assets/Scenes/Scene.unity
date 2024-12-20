@@ -1446,7 +1446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c0eb0beeaee50a4e9c28af42dd4f7a3, type: 3}
   m_Name: 
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1830722894}
-  rotSpeed: 1.5
+  rotSpeed: 0.5
 --- !u!1 &975953801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,6 +1922,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305943766}
   m_CullTransparentMesh: 1
+--- !u!1 &1418855153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
+  m_PrefabInstance: {fileID: 1830722893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1622679216
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,13 +2385,60 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1830722895}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1830722896}
   m_SourcePrefab: {fileID: 100100000, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
 --- !u!4 &1830722894 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
   m_PrefabInstance: {fileID: 1830722893}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1830722895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418855153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67506a8dc2140a746bf3c6b8b859aba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 963194228}
+  rotSpeed: 15
+  moveSpeed: 6
+--- !u!143 &1830722896
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418855153}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.4
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1833833018
 GameObject:
   m_ObjectHideFlags: 0
