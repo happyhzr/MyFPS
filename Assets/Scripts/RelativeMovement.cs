@@ -16,12 +16,14 @@ public class RelativeMovement : MonoBehaviour
     private CharacterController charController;
     private float vertSpeed;
     private ControllerColliderHit contact;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         charController = GetComponent<CharacterController>();
         vertSpeed = minFall;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -47,6 +49,7 @@ public class RelativeMovement : MonoBehaviour
             float check = (charController.height + charController.radius) / 1.9f;
             hitGround = hit.distance <= check;
         }
+        animator.SetFloat("Speed", movement.sqrMagnitude);
         if (hitGround)
         {
             if (Input.GetButtonDown("Jump"))
@@ -56,6 +59,7 @@ public class RelativeMovement : MonoBehaviour
             else
             {
                 vertSpeed = minFall;
+                animator.SetBool("Jumping", false);
             }
         }
         else
@@ -64,6 +68,10 @@ public class RelativeMovement : MonoBehaviour
             if (vertSpeed < terminalVelocity)
             {
                 vertSpeed = terminalVelocity;
+            }
+            if (contact != null)
+            {
+                animator.SetBool("Jumping", true);
             }
             if (charController.isGrounded)
             {
