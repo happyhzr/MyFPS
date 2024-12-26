@@ -12,6 +12,7 @@ public class RelativeMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float terminalVelocity = -10f;
     [SerializeField] private float minFall = -1.5f;
+    [SerializeField] private float pushForce = 3f;
 
     private CharacterController charController;
     private float vertSpeed;
@@ -86,7 +87,6 @@ public class RelativeMovement : MonoBehaviour
             }
         }
         movement.y = vertSpeed;
-        Debug.Log($"movement: {movement}");
         movement *= Time.deltaTime;
         charController.Move(movement);
     }
@@ -94,5 +94,10 @@ public class RelativeMovement : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         contact = hit;
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (body != null && !body.isKinematic)
+        {
+            body.velocity = hit.moveDirection * pushForce;
+        }
     }
 }
