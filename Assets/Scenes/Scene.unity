@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: cac8e398e5855464e824a8130214b14a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: ed32c19e07fd3214984ee57d88ef34b3, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -4431,6 +4431,7 @@ GameObject:
   - component: {fileID: 2046214593}
   - component: {fileID: 2046214594}
   - component: {fileID: 2046214595}
+  - component: {fileID: 2046214596}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -4492,6 +4493,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16bcb95f7832a44bb7940ace538b437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2046214596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046214591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ab39f45997e84d96936a56cd8a6eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sky: {fileID: 2100000, guid: cac8e398e5855464e824a8130214b14a, type: 2}
+  sun: {fileID: 705507994}
 --- !u!1 &2089657229
 GameObject:
   m_ObjectHideFlags: 0
