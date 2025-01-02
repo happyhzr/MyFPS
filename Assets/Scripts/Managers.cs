@@ -4,10 +4,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(InventoryManager))]
+[RequireComponent(typeof(WeatherManager))]
 public class Managers : MonoBehaviour
 {
     public static PlayerManager Player { get; private set; }
     public static InventoryManager Inventory { get; private set; }
+    public static WeatherManager Weather { get; private set; }
 
     private List<IGameManager> startSequence;
 
@@ -27,17 +29,20 @@ public class Managers : MonoBehaviour
     {
         Player = GetComponent<PlayerManager>();
         Inventory = GetComponent<InventoryManager>();
+        Weather = GetComponent<WeatherManager>();
         startSequence = new List<IGameManager>();
         startSequence.Add(Player);
         startSequence.Add(Inventory);
+        startSequence.Add(Weather);
         StartCoroutine(StartupManagers());
     }
 
     private IEnumerator StartupManagers()
     {
+        NetworkService service = new NetworkService();
         foreach (IGameManager manager in startSequence)
         {
-            manager.Startup();
+            manager.Startup(service);
         }
         yield return null;
 

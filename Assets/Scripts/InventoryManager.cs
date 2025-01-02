@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
 
     private Dictionary<string, int> items;
 
-    public void Startup()
+    public void Startup(NetworkService service)
     {
         Debug.Log("inventory manager starting...");
         status = ManagerStatus.Started;

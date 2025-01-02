@@ -20,7 +20,7 @@ public class WeatherController : MonoBehaviour
     void Update()
     {
         SetOvercast(cloudValue);
-        cloudValue += 0.005f;
+        cloudValue += 0.005f * Time.deltaTime;
     }
 
     private void SetOvercast(float value)
