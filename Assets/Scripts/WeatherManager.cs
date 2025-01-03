@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class WeatherManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
+    public float cloudValue { get; private set; }
 
     private NetworkService network;
 
@@ -13,16 +15,16 @@ public class WeatherManager : MonoBehaviour, IGameManager
     {
         Debug.Log("weather manager starting...");
         network = service;
-        string jsonPath = Path.Combine(Application.dataPath, "Resources", "Keys", "keys.json");
-        if (!File.Exists(jsonPath))
+        TextAsset jsonAsset = Resources.Load<TextAsset>("Keys/keys");
+        if (jsonAsset == null)
         {
-            Debug.LogError("JSON file not found at path: " + jsonPath);
+            Debug.LogError("JSON file not found at path: Keys/keys/json");
             return;
         }
-        string jsonString = File.ReadAllText(jsonPath);
+        string jsonString = jsonAsset.text;
         Keys data = new Keys();
         JsonUtility.FromJsonOverwrite(jsonString, data);
-        network.jsonApi = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&mod=xml&appid=" + data.appId;
+        network.jsonApi = "https://api.openweathermap.org/data/2.5/weather?q=Chicago,us&appid=" + data.appId;
 
         StartCoroutine(network.GetWeatherJson(OnJsonDataLoaded));
         status = ManagerStatus.Initializing;
@@ -30,8 +32,10 @@ public class WeatherManager : MonoBehaviour, IGameManager
 
     public void OnJsonDataLoaded(string data)
     {
-        Debug.Log(data);
         status = ManagerStatus.Started;
+        WeatherData wd = JsonConvert.DeserializeObject<WeatherData>(data);
+        cloudValue = wd.clouds.all / 100f;
+        Messenger.Broadcast(GameEvent.WEATHER_UPDATED);
     }
 
     // Start is called before the first frame update

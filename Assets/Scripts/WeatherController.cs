@@ -19,13 +19,26 @@ public class WeatherController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetOvercast(cloudValue);
-        cloudValue += 0.005f * Time.deltaTime;
+    }
+
+    private void OnEnable()
+    {
+        Messenger.AddListener(GameEvent.WEATHER_UPDATED, OnWeatherUpdated);
+    }
+
+    private void OnDisable()
+    {
+        Messenger.RemoveListener(GameEvent.WEATHER_UPDATED, OnWeatherUpdated);
     }
 
     private void SetOvercast(float value)
     {
         sky.SetFloat("_Blend", value);
         sun.intensity = fullIntensity - (fullIntensity * value);
+    }
+
+    private void OnWeatherUpdated()
+    {
+        SetOvercast(Managers.Weather.cloudValue);
     }
 }
