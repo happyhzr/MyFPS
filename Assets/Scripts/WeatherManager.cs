@@ -38,6 +38,11 @@ public class WeatherManager : MonoBehaviour, IGameManager
         Messenger.Broadcast(GameEvent.WEATHER_UPDATED);
     }
 
+    public void LogWeather(string name)
+    {
+        StartCoroutine(network.LogWeather(name, cloudValue, OnLogged));
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,5 +53,10 @@ public class WeatherManager : MonoBehaviour, IGameManager
     void Update()
     {
 
+    }
+
+    private void OnLogged(string response)
+    {
+        Debug.Log("logged: " + response);
     }
 }

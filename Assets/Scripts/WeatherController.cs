@@ -8,7 +8,6 @@ public class WeatherController : MonoBehaviour
     [SerializeField] private Light sun;
 
     private float fullIntensity;
-    private float cloudValue = 0f;
 
     // Start is called before the first frame update
     void Start()
