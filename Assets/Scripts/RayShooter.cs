@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 
 public class RayShooter : MonoBehaviour
 {
+    [SerializeField] private AudioSource soundSource;
+    [SerializeField] private AudioClip hitWallSound;
+    [SerializeField] private AudioClip hitEnemySound;
+
     private Camera cam;
 
     // Start is called before the first frame update
@@ -31,10 +35,12 @@ public class RayShooter : MonoBehaviour
                 {
                     target.ReactToHit();
                     Messenger.Broadcast(GameEvent.ENEMY_HIT);
+                    soundSource.PlayOneShot(hitEnemySound);
                 }
                 else
                 {
                     StartCoroutine(SphereIndicator(hit.point));
+                    soundSource.PlayOneShot(hitWallSound);
                 }
             }
         }
