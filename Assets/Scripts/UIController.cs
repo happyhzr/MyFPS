@@ -15,12 +15,27 @@ public class UIController : MonoBehaviour
     void Start()
     {
         settingsPopup.Close();
-        scoreLabel.text = score.ToString();
+        //scoreLabel.text = score.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            bool isShowing = !settingsPopup.gameObject.activeSelf;
+            settingsPopup.gameObject.SetActive(isShowing);
+            if (isShowing)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
     }
 
     public void OnOpenSettings()

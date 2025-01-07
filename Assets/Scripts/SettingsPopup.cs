@@ -5,18 +5,30 @@ using UnityEngine.UI;
 
 public class SettingsPopup : MonoBehaviour
 {
-    [SerializeField] private Slider speedSlider;
+    //[SerializeField] private Slider speedSlider;
+    [SerializeField] private AudioClip sound;
+
+    public void OnSoundToggle()
+    {
+        Managers.Audio.soundMute = !Managers.Audio.soundMute;
+        Managers.Audio.PlaySound(sound);
+    }
+
+    public void OnSoundValue(float volume)
+    {
+        Managers.Audio.soundVolume = volume;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        speedSlider.value = PlayerPrefs.GetFloat("speed", 1);
+        //speedSlider.value = PlayerPrefs.GetFloat("speed", 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Open()

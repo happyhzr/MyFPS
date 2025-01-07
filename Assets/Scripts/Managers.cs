@@ -6,12 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(InventoryManager))]
 [RequireComponent(typeof(WeatherManager))]
 [RequireComponent(typeof(ImagesManager))]
+[RequireComponent(typeof(AudioManager))]
 public class Managers : MonoBehaviour
 {
     public static PlayerManager Player { get; private set; }
     public static InventoryManager Inventory { get; private set; }
     public static WeatherManager Weather { get; private set; }
     public static ImagesManager Images { get; private set; }
+    public static AudioManager Audio { get; private set; }
 
     private List<IGameManager> startSequence;
 
@@ -33,11 +35,13 @@ public class Managers : MonoBehaviour
         Inventory = GetComponent<InventoryManager>();
         Weather = GetComponent<WeatherManager>();
         Images = GetComponent<ImagesManager>();
+        Audio = GetComponent<AudioManager>();
         startSequence = new List<IGameManager>();
         startSequence.Add(Player);
         startSequence.Add(Inventory);
         startSequence.Add(Weather);
         startSequence.Add(Images);
+        startSequence.Add(Audio);
         StartCoroutine(StartupManagers());
     }
 
