@@ -8,12 +8,14 @@ public class InventoryManager : MonoBehaviour, IGameManager
     public string equippedItem { get; private set; }
 
     private Dictionary<string, int> items;
+    private NetworkService network;
 
     public void Startup(NetworkService service)
     {
         Debug.Log("inventory manager starting...");
         status = ManagerStatus.Started;
         items = new Dictionary<string, int>();
+        network = service;
     }
 
     public void AddItem(string name)
