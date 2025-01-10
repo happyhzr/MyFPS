@@ -89,7 +89,6 @@ public class PointClickMovement : MonoBehaviour
             float check = (charController.height + charController.radius) / 1.9f;
             hitGround = hit.distance <= check;
         }
-        animator.SetFloat("Speed", movement.sqrMagnitude);
         if (hitGround)
         {
             if (Input.GetButtonDown("Jump"))
@@ -125,6 +124,8 @@ public class PointClickMovement : MonoBehaviour
                 }
             }
         }
+
+        animator.SetFloat("Speed", movement.sqrMagnitude);
         movement.y = vertSpeed;
         movement *= Time.deltaTime;
         charController.Move(movement);
