@@ -6107,6 +6107,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1830722900}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1830722902}
   m_SourcePrefab: {fileID: 100100000, guid: 279d22ba4dea0d04498c16251edd178f, type: 3}
 --- !u!4 &1830722894 stripped
 Transform:
@@ -6120,7 +6123,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418855153}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67506a8dc2140a746bf3c6b8b859aba3, type: 3}
   m_Name: 
@@ -6280,6 +6283,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ce323fdbd37634799499625fc5d4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1830722902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418855153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b736af16ce73add489b0742da88b066d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rotSpeed: 15
+  moveSpeed: 6
+  jumpSpeed: 15
+  gravity: -9.8
+  terminalVelocity: -10
+  minFall: -1.5
+  pushForce: 3
+  deceleration: 25
+  targetBuffer: 1.5
 --- !u!1 &1833833018
 GameObject:
   m_ObjectHideFlags: 0
