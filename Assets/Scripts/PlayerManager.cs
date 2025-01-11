@@ -27,9 +27,7 @@ public class PlayerManager : MonoBehaviour, IGameManager
         {
             health = 0;
         }
-        Debug.Log($"health: {health}/{maxHealth}");
-
-
+        Messenger.Broadcast(GameEvent.HEALTH_UPDATED);
     }
 
     // Start is called before the first frame update
