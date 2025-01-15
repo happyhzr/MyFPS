@@ -1,8 +1,4 @@
 # MyFPSNext
 
-add keys.json in /Assets/Resources/Keys/
-```json
-{
-    "appId":"YOUR_APP_ID"
-}
-```
+- use mouse click to move
+- use keyboard 'm' to toggle menu
