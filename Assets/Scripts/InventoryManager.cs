@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour, IGameManager
     {
         Debug.Log("inventory manager starting...");
         status = ManagerStatus.Started;
-        items = new Dictionary<string, int>();
+        UpdateData(new Dictionary<string, int>());
         network = service;
     }
 
@@ -76,6 +76,16 @@ public class InventoryManager : MonoBehaviour, IGameManager
         }
         DisplayItems();
         return true;
+    }
+
+    public void UpdateData(Dictionary<string, int> items)
+    {
+        this.items = items;
+    }
+
+    public Dictionary<string, int> GetData()
+    {
+        return items;
     }
 
     // Start is called before the first frame update

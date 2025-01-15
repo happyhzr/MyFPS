@@ -15,8 +15,7 @@ public class MissionManager : MonoBehaviour, IGameManager
     {
         Debug.Log("mission manager starting...");
         network = service;
-        curLevel = 0;
-        maxLevel = 1;
+        UpdateData(0, 3);
         status = ManagerStatus.Started;
     }
 
@@ -32,6 +31,7 @@ public class MissionManager : MonoBehaviour, IGameManager
         else
         {
             Debug.Log("last level");
+            Messenger.Broadcast(GameEvent.GAME_COMPLETE);
         }
     }
 
@@ -45,6 +45,12 @@ public class MissionManager : MonoBehaviour, IGameManager
         string name = $"Level{curLevel}";
         Debug.Log($"loading {name}");
         SceneManager.LoadScene(name);
+    }
+
+    public void UpdateData(int curLevel, int maxLevel)
+    {
+        this.curLevel = curLevel;
+        this.maxLevel = maxLevel;
     }
 
     // Start is called before the first frame update

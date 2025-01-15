@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(ImagesManager))]
 [RequireComponent(typeof(AudioManager))]
 [RequireComponent(typeof(MissionManager))]
+[RequireComponent(typeof(DataManager))]
 public class Managers : MonoBehaviour
 {
     public static PlayerManager Player { get; private set; }
@@ -16,6 +17,7 @@ public class Managers : MonoBehaviour
     public static ImagesManager Images { get; private set; }
     public static AudioManager Audio { get; private set; }
     public static MissionManager Mission { get; private set; }
+    public static DataManager Data { get; private set; }
 
     private List<IGameManager> startSequence;
 
@@ -41,6 +43,7 @@ public class Managers : MonoBehaviour
         Images = GetComponent<ImagesManager>();
         Audio = GetComponent<AudioManager>();
         Mission = GetComponent<MissionManager>();
+        Data = GetComponent<DataManager>();
 
         startSequence = new List<IGameManager>();
         startSequence.Add(Player);
@@ -49,6 +52,7 @@ public class Managers : MonoBehaviour
         startSequence.Add(Images);
         startSequence.Add(Audio);
         startSequence.Add(Mission);
+        startSequence.Add(Data);
         StartCoroutine(StartupManagers());
     }
 

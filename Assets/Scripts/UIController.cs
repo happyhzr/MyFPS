@@ -9,6 +9,16 @@ public class UIController : MonoBehaviour
     [SerializeField] private InventoryPopup popup;
     [SerializeField] private TMP_Text levelEnding;
 
+    public void SaveGame()
+    {
+        Managers.Data.SaveGameState();
+    }
+
+    public void LoadGame()
+    {
+        Managers.Data.LoadGameState();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +43,7 @@ public class UIController : MonoBehaviour
         Messenger.AddListener(GameEvent.HEALTH_UPDATED, OnHealthUpdated);
         Messenger.AddListener(GameEvent.LEVEL_COMPLETE, OnLevelComplete);
         Messenger.AddListener(GameEvent.LEVEL_FAILED, OnLevelFailed);
+        Messenger.AddListener(GameEvent.GAME_COMPLETE, OnGameComplete);
     }
 
     private void OnDisable()
@@ -40,6 +51,7 @@ public class UIController : MonoBehaviour
         Messenger.RemoveListener(GameEvent.HEALTH_UPDATED, OnHealthUpdated);
         Messenger.RemoveListener(GameEvent.LEVEL_COMPLETE, OnLevelComplete);
         Messenger.RemoveListener(GameEvent.LEVEL_FAILED, OnLevelFailed);
+        Messenger.RemoveListener(GameEvent.GAME_COMPLETE, OnGameComplete);
     }
 
     private void OnHealthUpdated()
@@ -73,5 +85,11 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(2);
         Managers.Player.Respawn();
         Managers.Mission.RestartCurrent();
+    }
+
+    private void OnGameComplete()
+    {
+        levelEnding.gameObject.SetActive(true);
+        levelEnding.text = "You finished the game!";
     }
 }

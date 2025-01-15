@@ -39,6 +39,12 @@ public class PlayerManager : MonoBehaviour, IGameManager
         UpdateData(50, 100);
     }
 
+    public void UpdateData(int health, int maxHealth)
+    {
+        this.health = health;
+        this.maxHealth = maxHealth;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,11 +55,5 @@ public class PlayerManager : MonoBehaviour, IGameManager
     void Update()
     {
 
-    }
-
-    private void UpdateData(int health, int maxHealth)
-    {
-        this.health = health;
-        this.maxHealth = maxHealth;
     }
 }
